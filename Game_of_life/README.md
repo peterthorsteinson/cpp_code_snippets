@@ -14,7 +14,8 @@
 ## The inout file
 
 A generation consists of these rules being applied to every cell of the current game state, to generate the next game state. 
-The initial game state is read in from a file. The file must adhere to the following convention: 
+The initial game state is read in from a file (such as the provided sample input file named input.bin).
+The file must adhere to the following convention: 
  
 - The first byte is the length of the grid.
 - The second byte is the width of the grid.
