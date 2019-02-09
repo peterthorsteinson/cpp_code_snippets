@@ -11,7 +11,7 @@
 - A live cell with more than three neighbors dies.
 - A dead cell with three live neighbors becomes live 
 
-## The inout file
+## The Input File
 
 A generation consists of these rules being applied to every cell of the current game state, to generate the next game state. 
 The initial game state is read in from a file (such as the provided sample input file named input.bin).
@@ -24,3 +24,6 @@ The file must adhere to the following convention:
 This means that for an M x N size grid the size of the file should be (M x N) + 2 bytes.
 So that the grid may be printed on a terminal screen we will need to limit grid size appropriately.
 The file name is passed to the program as a command-line parameter.
+
+NOTE: The provided sample input file named input.bin is binary (not ascii or unicode), so it must be viewed in a hex editor to see the data contents. The provided input.bin file contains 10 and 10 for the first 2 bytes, followed by 100 bytes that each contain a 0 or a 1. If you want to try editing your own input file, you would have to edit it in a hex editor yourself.
+
