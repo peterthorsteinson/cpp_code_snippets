@@ -1,6 +1,6 @@
-# In theory, the Game of Life is played out on an infinite grid.
-# This version uses a finite wrap-around grid that continues on opposite edges (modulo arithmetic).
-# See below for another version that does not use a warp-around grid but instead just has hard edges.
+// In theory, the Game of Life is played out on an infinite grid.
+// This version uses a finite wrap-around grid that continues on opposite edges (modulo arithmetic).
+// See below for another version that does not use a warp-around grid but instead just has hard edges.
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -123,9 +123,9 @@ int get_neighbors(int i, int j, int x, int y, char** grid) {
 
 ////////
 
-# In theory, the Game of Life is played out on an infinite grid.
-# This version uses a finite hard-edged grid without without wrap-around.
-# See above for another version that uses a wrap-around grid that continues on opposite edges (modulo arithmetic).
+// In theory, the Game of Life is played out on an infinite grid.
+// This version uses a finite hard-edged grid without without wrap-around.
+// See above for another version that uses a wrap-around grid that continues on opposite edges (modulo arithmetic).
 
 #include <stdlib.h>
 #include <stdio.h>
