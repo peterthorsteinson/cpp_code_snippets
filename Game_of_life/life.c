@@ -45,23 +45,37 @@ void print_grid(int x, int y, char** grid) {
 char** mutate(int x, int y, char** grid) {
 	// Every cell interacts with its eight neighbours
 	// that are horizontally, vertically, or diagonally adjacent
+
 	char** new_grid = get_grid(x, y); // creates new blank slate to be updated
+
 	// grid points to previous game state, new_grid points to new game state
 	// update new game state according to rules applied to previous game state
 	for (int i = 0; i < x; i++) {
 		for (int j = 0; j < y; j++) {
 			int live_neighbors = get_neighbors(i, j, x, y, grid); // count live neighbors
 
-			// live cell with less than two live neighbors dies
-			if (grid[i][j] != 0 && live_neighbors < 2)  { new_grid[i][j] = 0; } else
-			// live cell with two or three live neighbors lives
-			if (grid[i][j] != 0 && live_neighbors <= 3) { new_grid[i][j] = 1; } else
-			// live cell with more than three neighbors dies
-			if (grid[i][j] != 0 && live_neighbors > 3)  { new_grid[i][j] = 0; } else
-			// dead cell with three live neighbors becomes live
-			if (grid[i][j] == 0 && live_neighbors == 3) { new_grid[i][j] = 1; } else	
-			// if we get this far then no changes required, so just copy this element
-			new_grid[i][j] = grid[i][j];  // copy element from old game state to new game state
+			// copy element from old game state as starting value and then see if it changes
+			new_grid[i][j] = grid[i][j];
+
+			// if current cell is live
+			if (grid[i][j] != 0) {
+				// live cell with < 2 live neighbors dies
+				if (live_neighbors < 2) new_grid[i][j] = 0;
+
+				// live cell with > 3 live neighbors dies
+
+				if (live_neighbors > 3) new_grid[i][j] = 0;
+
+				// live cell with 2 or 3 live lives
+
+				if (live_neighbors == 2 || live_neighbors == 2) new_grid[i][j] = 1;
+
+			}
+			// else current cell is dead
+			else {
+				// dead cell with 3 live neighbors becomes live
+				if (live_neighbors == 3) new_grid[i][j] = 1;
+			}
 		}
 	}
 
