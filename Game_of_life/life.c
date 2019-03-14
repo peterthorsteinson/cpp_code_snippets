@@ -57,8 +57,8 @@ char** mutate(int x, int y, char** grid) {
 		for (int j = 0; j < y; j++) {
 			// count live neighbors
 			// NOTE: comment out one of the following lines and uncomment the other
-			int live_neighbors = get_neighbors_wrap(i, j, x, y, grid);
-			//int live_neighbors = get_neighbors_no_wrap(i, j, x, y, grid);
+			//int live_neighbors = get_neighbors_wrap(i, j, x, y, grid);
+			int live_neighbors = get_neighbors_no_wrap(i, j, x, y, grid);
 
 			// copy element from old game state as starting value and then see if it changes
 			new_grid[i][j] = grid[i][j];
@@ -133,18 +133,18 @@ int get_neighbors_no_wrap(int i, int j, int x, int y, char** grid) {
 	int live_neighbors = 0;
 
 	// 3 neighbors on row above cell
-	if (i - 1 >= 0 && j - 1 >= 0 && grid[i - 1][j - 1] > 0) live_neighbors++;   // test cell up-left
-	if (i - 1 >= 0 && grid[i - 1][j] > 0) live_neighbors++;   // test cell up
-	if (i - 1 >= 0 && j + 1 < y  && grid[i - 1][j + 1] > 0) live_neighbors++;   // test cell up-right
+	if (i - 1 >= 0 && j - 1 >= 0  && grid[i - 1][j - 1] > 0) live_neighbors++;   // test cell up-left
+	if (i - 1 >= 0                && grid[i - 1][j] > 0)     live_neighbors++;   // test cell up
+	if (i - 1 >= 0 && j + 1 < y   && grid[i - 1][j + 1] > 0) live_neighbors++;   // test cell up-right
 
 	// 2 neighbors on same row as cell
-	if (j - 1 >= 0 && grid[i][j - 1] > 0) live_neighbors++;     // test cell left
-	if (j + 1 < y             && grid[i][j + 1] > 0) live_neighbors++;     // test cell right
+	if (              j - 1 >= 0  && grid[i][j - 1] > 0)     live_neighbors++;   // test cell left
+	if (              j + 1 < y   && grid[i][j + 1] > 0)     live_neighbors++;   // test cell right
 
 	// 3 neighbors on row below cell
-	if (i + 1 < x && j - 1 >= 0 && grid[i + 1][j - 1] > 0) live_neighbors++;    // test cell down-left
-	if (i + 1 < x              && grid[i + 1][j] > 0)   live_neighbors++;    // test cell down
-	if (i + 1 < x && j + 1 < y   && grid[i + 1][j + 1] > 0) live_neighbors++;    // test cell down-right
+	if (i + 1 < x  && j - 1 >= 0  && grid[i + 1][j - 1] > 0) live_neighbors++;   // test cell down-left
+	if (i + 1 < x                 && grid[i + 1][j] > 0)     live_neighbors++;   // test cell down
+	if (i + 1 < x  && j + 1 < y   && grid[i + 1][j + 1] > 0) live_neighbors++;   // test cell down-right
 
 	return live_neighbors;
 }
