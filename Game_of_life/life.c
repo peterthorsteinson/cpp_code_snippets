@@ -67,14 +67,10 @@ char** mutate(int x, int y, char** grid) {
 			if (grid[i][j] != 0) {
 				// live cell with < 2 live neighbors dies
 				if (live_neighbors < 2) new_grid[i][j] = 0;
-
 				// live cell with > 3 live neighbors dies
-
 				if (live_neighbors > 3) new_grid[i][j] = 0;
-
-				// live cell with 2 or 3 live lives
-
-				if (live_neighbors == 2 || live_neighbors == 2) new_grid[i][j] = 1;
+				// live cell with 2 or 3 live neighbors lives
+				if (live_neighbors == 2 || live_neighbors == 3) new_grid[i][j] = 1;
 
 			}
 			// else current cell is dead
